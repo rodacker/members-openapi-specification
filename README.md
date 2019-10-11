@@ -36,12 +36,20 @@ The collection response of the `GET /members` endpoint looks like:
       "description": "The young man, called to adventure, the hero going out facing the trials and ordeals, and coming back after his victory with a boon for the community",
       "image": "https://upload.wikimedia.org/wikipedia/en/9/9b/Luke_Skywalker.png"
     },
-    ...
+    {   
+      "id": "492bb9fe-a79e-46fa-bf14-4bde44edf7a7",
+      "name": "Darth Vader",
+      "description": "Once a heroic Jedi Knight, Darth Vader was seduced by the dark side of the Force, became a Sith Lord, and led the Empire’s eradication of the Jedi Order. He remained in service of the Emperor -- the evil Darth Sidious -- for decades, enforcing his Master’s will and seeking to crush the fledgling Rebel Alliance. But there was still good in him…",
+      "image": "https://upload.wikimedia.org/wikipedia/en/7/76/Darth_Vader.jpg"
+    }
   ],
   "meta": {
     "pagination": {
-      ...
-    } 
+      "page": 3,
+      "count": 263,
+      "total": 1263,
+      "limit": 500
+    }
   }
 }   
 

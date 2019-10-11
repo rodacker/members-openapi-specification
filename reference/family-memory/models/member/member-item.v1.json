@@ -1,0 +1,9 @@
+{
+  "title": "tag-item",
+  "type": "object",
+  "properties": {
+    "data": {
+      "$ref": "./member-response.v1.json"
+    }
+  }
+}

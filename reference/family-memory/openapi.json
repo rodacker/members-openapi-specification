@@ -1,0 +1,217 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Members API",
+    "version": "1.0",
+    "description": "Simple API for members which are reflected by a name, description and image",
+    "contact": {
+      "name": "Patrick",
+      "url": "https://rodacker.se",
+      "email": "family-memory@rodacker.de"
+    }
+  },
+  "servers": [
+    {
+      "url": "api.memory.rodacker.de",
+      "description": "production"
+    },
+    {
+      "url": "family-memory.test",
+      "description": "development"
+    }
+  ],
+  "paths": {
+    "/members": {
+      "get": {
+        "operationId": "listMembers",
+        "summary": "list a collection of members",
+        "description": "Retrieve all members as collection",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./models/member/member-collection.v1.json"
+                },
+                "examples": {}
+              }
+            }
+          },
+          "405": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "http": []
+          }
+        ],
+        "tags": [
+          "member"
+        ]
+      },
+      "post": {
+        "summary": "create a new member",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./models/member/member-item.v1.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "security": [
+          {
+            "http": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./models/member/member.v1.json"
+              }
+            }
+          }
+        },
+        "operationId": "createMember",
+        "description": "create a new member",
+        "tags": [
+          "member"
+        ]
+      }
+    },
+    "/members/{memberId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/memberId"
+        }
+      ],
+      "get": {
+        "summary": "retrieve a member",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./models/member/member-item.v1.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "405": {
+            "description": "Method Not Allowed"
+          }
+        },
+        "operationId": "retrieveMember",
+        "description": "get a single member",
+        "security": [
+          {
+            "http": []
+          }
+        ],
+        "tags": [
+          "member"
+        ]
+      },
+      "put": {
+        "operationId": "replaceMember",
+        "summary": "update a single member",
+        "description": "update an exising member by replacing it",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./models/member/member-item.v1.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "405": {
+            "description": "Method Not Allowed"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./models/member/member.v1.json"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "http": []
+          }
+        ],
+        "tags": [
+          "member"
+        ]
+      },
+      "delete": {
+        "operationId": "delateMember",
+        "summary": "delate a member",
+        "description": "delete an existing member",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "security": [
+          {
+            "http": []
+          }
+        ],
+        "tags": [
+          "member"
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "http": {
+        "type": "http",
+        "scheme": "Bearer"
+      }
+    },
+    "parameters": {
+      "memberId": {
+        "in": "path",
+        "name": "memberId",
+        "description": "the member id (uuid)",
+        "schema": {
+          "$ref": "./models/id.v1.json"
+        },
+        "required": true
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "member",
+      "description": "a family member"
+    }
+  ]
+}

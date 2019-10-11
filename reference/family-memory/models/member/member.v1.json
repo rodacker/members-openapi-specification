@@ -1,0 +1,23 @@
+{
+  "title": "member",
+  "type": "object",
+  "x-tags": [
+    "member"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "description",
+    "image"
+  ]
+}

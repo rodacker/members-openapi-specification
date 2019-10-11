@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "./member-response.v1.json"
+      }
+    }
+  }
+}
